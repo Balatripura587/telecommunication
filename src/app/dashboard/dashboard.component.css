@@ -1,0 +1,263 @@
+.bg-custom{
+    background-color: #041E42 !important;
+}
+.navbar-brand{
+    font-size: 30px;
+    font-weight: bolder;
+}
+li a{
+    font-size: 20px;
+}
+.signin{
+    background-color: white;
+}
+.signin:hover{
+    color: navy;
+}
+.main{
+    width: 100%;
+    display: flex;
+    margin: 20px;
+}
+.leftpanel{
+    width: 47%;
+}
+.top-bar1, .top-bar2{
+    display: flex;
+
+}
+.top-bar1{
+    justify-content: space-around;
+}
+.top-bar2{
+    margin-top: 20px;
+    justify-content: space-around;
+}
+.gen-bill, .new-conn, .new-plans, .reactivation{
+    height: 200px;
+    width: 300px;
+}
+.gen-bill{
+    background: linear-gradient(to right, #FFE000, orange);
+}
+.new-conn{
+    background: linear-gradient(to right,#52c234, green);
+}
+.new-plans{
+    background: linear-gradient(to right, #00B4DB, #0083B0);
+}
+.reactivation{
+    background: linear-gradient(to right, #f953c6, #b91d73);
+}
+.top-section{
+    margin: 20px;
+    text-align: center;
+}
+.bottom-section{
+    margin-top: 80px;
+}
+.bottom-section button{
+    height: 45px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+}
+.bottom-section button:hover{
+    background-color: rgba(0, 0, 0, 0.8)
+}
+.content-area{
+    background: #a9a9a9a9;
+    padding: 20px;
+    width: 40%;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    overflow-y: scroll;
+}
+.listi{
+    width: 100%;
+    height: auto;
+    background-color: #333;
+    color: white;
+    margin-top: 10px;
+    padding: 15px;
+}
+.indlist{
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    vertical-align: middle;
+    border-radius: 10px;
+}
+.toggleTo{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.toggleTo .prepaid{
+    width: 50%;
+    border: 0px;
+}
+.toggleTo .postpaid{
+    width: 50%;
+    border: 0px;
+    background-color: #333;
+    color: white;
+}
+.but{
+    display: flex;
+}
+.but button{
+    width: 80px;
+}
+.footer-section{
+    height: 400px;
+    width: 100%;
+    background-color: #041E42;
+}
+footer{
+    display: flex;
+    justify-content: space-around;
+}
+.address{
+    margin-left: 80px;
+    padding-top: 50px;
+    color: white;
+    width: 50%;
+}
+pre{
+    padding-top: 70px;
+    color: #a9a9a9a9;
+    width: 50%;
+}
+.social{
+    display: flex;
+    width: 100px;
+    margin-left: -20px;
+}
+.social a .smallicon{
+    height: 30px;
+    width: 30px;
+    justify-content: space-between;
+    margin-left: 20px;
+}
+
+@media only screen and (max-width: 600px){
+    .main{
+        width: 100%;
+        display: block;
+        margin: 0 auto; 
+    }
+    .leftpanel{
+        width: 100%;
+    }
+    .top-bar1, .top-bar2{
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+    
+    }
+    .top-bar1{
+        justify-content: none;
+    }
+    .top-bar2{
+        margin-top: 20px;
+        justify-content: none;
+    }
+    .gen-bill, .new-conn, .new-plans, .reactivation{
+        height: 200px;
+        width: 300px;
+        margin: 0 auto;
+        margin-top: 10px;
+        padding-top: 10px;
+    }
+    .top-section{
+        text-align: center;
+    }
+    .bottom-section{
+        margin-top: 60px;
+    }
+    .bottom-section button{
+        height: 45px;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+    }
+    .bottom-section button:hover{
+        background-color: rgba(0, 0, 0, 0.8)
+    }
+    .content-area{
+        background: #a9a9a9a9;
+        padding: 10px;
+        width: auto;
+        height: 400px;
+        margin: 0 auto;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 30px;
+        overflow-y: scroll;
+    }
+    .indlist{
+        margin-top: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        background-color: #333;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        font-size: 20px;
+        vertical-align: middle;
+        border-radius: 10px;
+    }
+    .but{
+        display: flex;
+    }
+    .but button{
+        width: 80px;
+    }
+    .footer-section{
+        height: 500px;
+        width: 100%;
+        background-color: #041E42;
+    }
+    footer{
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+    .address{
+        margin-left: 50px;
+        padding-top: 50px;
+        color: white;
+        width: 50%;
+    }
+    pre{
+        padding-top: 50px;
+        margin: 0px 0px 0px;
+        color: #a9a9a9a9;
+        width: 100%;
+    }
+    .social{
+        display: flex;
+        width: 100px;
+        margin-left: -20px;
+    }
+    .social a .smallicon{
+        height: 30px;
+        width: 30px;
+        justify-content: space-between;
+        margin-left: 20px;
+    }
+}

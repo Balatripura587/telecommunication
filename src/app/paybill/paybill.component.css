@@ -1,0 +1,24 @@
+.container{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	max-width: 500px;
+	height: auto;
+	background: linear-gradient(to right, #0575E6, #021B79);
+    color: white;
+}
+span{
+    color: red;
+    font-weight: bolder;
+}
+.can{
+	display: flex;
+	justify-content: space-between;
+}
+.expd{
+	width: 60%;
+}
+.cvc{
+	width: 40%;
+}

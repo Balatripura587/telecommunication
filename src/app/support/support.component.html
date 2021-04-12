@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="leftpanel">
+        <button class="box1" (click)='changeContent1()'>
+            <h3>Tele Com Mobile Connection</h3>
+        </button><br>
+        <button class="box2" (click)='changeContent2()'>
+            <h3>Tele Com Landline Connection</h3>
+        </button><br>
+        <button class="box3" (click)='changeContent3()'>
+            <h3>Tele Com Fibre (Broadband)</h3>
+        </button><br>
+        <button class="box4" (click)='changeContent4()'>
+            <h3>Tele Com DTH</h3>
+        </button><br>
+    </div>
+    <div class="rightpanel">
+        <p> {{ content }}</p>
+    </div>
+</div>

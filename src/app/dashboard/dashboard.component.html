@@ -1,0 +1,216 @@
+ <div class="main">
+    <div class="leftpanel">
+        <div class="top-bar1">
+            <div class="gen-bill">
+                <div class="top-section">
+                    <h3>Active Subscibers <br>    1,02,394</h3>
+                </div>
+                <div class="bottom-section">
+                    <button (click)="choosePanel1()">Generate Balance</button>
+                </div>
+            </div>
+            <div class="new-conn">
+                <div class="top-section">
+                    <h3>Connection Request <br> 21,342</h3>
+                </div>
+                <div class="bottom-section">
+                    <button (click)="choosePanel2()">Approve / Reject Request</button>
+                </div>
+            </div>
+        </div>
+        <div class="top-bar2">
+            <div class="new-plans">
+                <div class="top-section">
+                    <h3>Number of Plans <br>  231</h3>
+                </div>
+                <div class="bottom-section">
+                    <button (click)="choosePanel3()">Edit Plans</button>
+                </div>
+            </div>
+            <div class="reactivation">
+                <div class="top-section">
+                    <h3>List of defaulters <br> 542</h3>
+                </div>
+                <div class="bottom-section">
+                    <button (click)="choosePanel4()">See defaulters</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-area" [ngSwitch]="section">
+        <div *ngSwitchCase = "'1'">
+            <form #genBal = "ngForm" (ngSubmit)="searchCustomer(genBal.value)">
+                <div class="form-group">
+                    <label for="conntype">Enter connection type</label>
+                    <select class="form-control" id="conntype" ngModel name="service">
+                        <option value="postpaid">Postpaid</option>
+                        <option value="landline">Landline</option>
+                        <option value="dth">DTH</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputNumber1">Enter Email ID</label>
+                    <input type="text" class="form-control" id="exampleInputNumber1" aria-describedby="numberHelp" placeholder="Enter Email ID" ngModel name="email">
+                    <small id="numberHelp" class="form-text text-muted">We'll never share your ID with anyone else.</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Generate Balance</button>
+            </form>
+            <div class="listi" *ngFor = "let c of customers">
+                <p>{{ c.custid }} : {{ c.name }}</p>
+                <form #sendMailForm = "ngForm" (ngSubmit)="sendMail(sendMailForm.value)">
+                    <div class="form-group" [hidden]='false'>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" ngModel="{{ c.email }}">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="bill" id="bill" class="form-control" placeholder="Bill Amount in INR" ngModel>
+                    </div>
+                    <button type="submit" onclick="window.location.reload()" class="btn btn-warning">Generate Balance</button>
+                </form>
+            </div>
+        </div>
+        <div *ngSwitchCase = "'2'">
+            <div *ngIf = 'checkReq(); then requestBlock; else noRequestBlock'></div>
+            <ng-template #noRequestBlock><h2>No request at this moment</h2></ng-template>
+            <ng-template #requestBlock>
+            <div class="indlist" *ngFor = "let r of requests">
+                <p>{{ r.service }} : {{ r.name }}</p>
+                <div class="but">
+                    <form #appForm = "ngForm" (ngSubmit) = sendApproval(appForm.value)>
+                        <!-- <form action=""> -->
+                        <div class="form-group" [hidden]='true'>
+                            <input type="text" class="form-control" name="service" id="sT" ngModel="{{ r.service }}" readonly>
+                        </div>
+                        <div class="form-group" [hidden]='true'>
+                            <input type="text" class="form-control" name="name" id="fullname" placeholder="Full Name" autofocus ngModel="{{ r.name }}">
+                        </div>
+                        <div class="form-group" [hidden]='true'>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" ngModel="{{ r.email }}">
+                        </div>
+                        <div class="form-group" [hidden]='true'>
+                            <label for="date">Date of Birth</label>
+                            <input type="date" class="form-control" name="dob" id="date" placeholder="Date of Birth" ngModel="{{ r.dob }}">
+                        </div>
+                        <div class="form-group" [hidden]='true'>
+                            <label for="exampleFormControlSelect2">Gender</label>
+                            <select class="form-control" id="exampleFormControlSelect2" name="gender" ngModel="{{ r.gender }}">
+                              <option value="M">Male</option>
+                              <option value="F">Female</option>
+                              <option value="X">Prefer no to Say</option>
+                            </select>
+                        </div>
+                        <div class="form-group" [hidden]='true'>
+                            <input type="text" class="form-control" name="address" id="Address" placeholder="Your address" ngModel="{{ r.address }}">
+                        </div>
+                        <div class="form-group" [hidden]='true'>
+                            <input type="text" class="form-control" name="service" id="Address" placeholder="Your address" ngModel="{{ r.service }}">
+                        </div>
+                        <button type="submit" class="btn btn-success" onclick="window.location.reload()">Approve</button></form>
+                        <form #rejectForm = "ngForm" (ngSubmit) = sendRejection(rejectForm.value)>
+                          <!-- <form action=""> -->
+                            <div class="form-group" [hidden]='true'>
+                                <input type="text" class="form-control" name="service" id="sT" ngModel="{{ r.service }}" readonly>
+                            </div>
+                            <div class="form-group" [hidden]='true'>
+                                <input type="text" class="form-control" name="name" id="fullname" placeholder="Full Name" autofocus ngModel="{{ r.name }}">
+                            </div>
+                            <div class="form-group" [hidden]='true'>
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" ngModel="{{ r.email }}">
+                            </div>
+                            <div class="form-group" [hidden]='true'>
+                                <label for="date">Date of Birth</label>
+                                <input type="date" class="form-control" name="dob" id="date" placeholder="Date of Birth" ngModel="{{ r.dob }}">
+                            </div>
+                            <div class="form-group" [hidden]='true'>
+                                <label for="exampleFormControlSelect2">Gender</label>
+                                <select class="form-control" id="exampleFormControlSelect2" name="gender" ngModel="{{ r.gender }}">
+                                  <option value="M">Male</option>
+                                  <option value="F">Female</option>
+                                  <option value="X">Prefer no to Say</option>
+                                </select>
+                            </div>
+                            <div class="form-group" [hidden]='true'>
+                                <input type="text" class="form-control" name="address" id="Address" placeholder="Your address" ngModel="{{ r.address }}">
+                            </div>
+                            <div class="form-group" [hidden]='true'>
+                                <input type="text" class="form-control" name="service" id="Address" placeholder="Your address" ngModel="{{ r.service }}">
+                            </div>                        
+                        <button type="submit" class="btn btn-danger" onclick="window.location.reload()">Reject</button>
+                    </form>
+                </div>
+            </div>
+            </ng-template>
+        </div>
+        <div *ngSwitchCase = "'3'">
+            <div class="toggleTo">
+                <button (click)="toggleToPre()" class="prepaid">Prepaid Form</button>
+                <button (click)= "toggleToPost()" class="postpaid">Postpaid Form</button>
+            </div>
+            <div *ngIf = "preorpost; then prepaidBlock; else postpaidBlock"></div>
+            <ng-template #prepaidBlock> 
+                <form #prepaidplans = "ngForm" (ngSubmit) = "onClickSubmit(prepaidplans.value)">
+                    <div class="form-group">
+                        <label for="exampleInputNumber1">Calls</label>
+                        <input type="text" class="form-control" id="exampleInputNumber1" placeholder="Call duration" name="calls" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputNumber2">Internet</label>
+                        <input type="text" class="form-control" id="exampleInputNumber2" placeholder="Daily Internet Usage" name="data" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputNumber3">Price</label>
+                        <input type="text" class="form-control" id="exampleInputNumber3" placeholder="Price of plan" name="amt" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputNumber4">Validity</label>
+                        <input type="text" class="form-control" id="exampleInputNumber4" placeholder="Validity" name="validity" ngModel>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                </form>
+            </ng-template>
+            <ng-template #postpaidBlock>
+                <form #postpaidplans = "ngForm" (ngSubmit) = "onClickSubmitPostpaid(postpaidplans.value)">
+                    <div class="form-group">
+                        <label for="exampleInputNumber1">Calls</label>
+                        <input type="text" class="form-control" id="exampleInputNumber1" placeholder="Call duration" name="calls" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputNumber2">Internet</label>
+                        <input type="text" class="form-control" id="exampleInputNumber2" placeholder="Monthly Internet Usage" name="data" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputNumber3">Price</label>
+                        <input type="text" class="form-control" id="exampleInputNumber3" placeholder="Price of plan" name="amt" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputNumber3">Members</label>
+                        <input type="text" class="form-control" id="exampleInputNumber3" placeholder="Member Addons" name="member" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputNumber4">Validity</label>
+                        <input type="text" class="form-control" id="exampleInputNumber4" placeholder="Validity" name="validity" ngModel>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                </form>
+            </ng-template>
+        </div>
+        <div *ngSwitchCase = "'4'">
+            <div *ngFor = "let d of defaulters">
+                <div class="indlist">
+                    <p>ID : {{ d.custid }} || NAME : {{ d.name }}</p>
+                    <div class="but">
+                        <form #cancelconn = "ngForm" (ngSubmit)= "cancelConnection(cancelconn.value)">
+                            <div class="form-group" [hidden]='true'>
+                                <input type="email" name="email" id="email" ngModel="{{d.email}}">
+                            </div>
+                            <button type="submit" class="btn btn-danger" onclick="window.location.reload()">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngSwitchDefault>
+            <h2 style="text-align: center; margin-top: 40px;">Work Area</h2>
+        </div>
+    </div>
+  </div>
+  

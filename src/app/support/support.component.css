@@ -1,0 +1,66 @@
+.container{
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+.leftpanel{
+    width: 50%;
+    margin: 20px;
+}
+.box1, .box2, .box3, .box4{
+    padding: 20px;
+    margin-top: 10px;
+    height: 120px;
+    width: 200px;
+    background-color: #a9a9a9a9;
+    border: 0;
+    cursor: pointer;
+}
+.box1:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.box2:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.box3:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.box4:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.rightpanel{
+    background-color: #333;
+    width: 50%;
+    height: 550px;
+    color: white;
+    padding: 30px;
+    margin: 20px;
+}
+@media only screen and (max-width: 600px){
+    .container{
+        display: block;
+        margin: 0 auto;
+    }
+    .leftpanel{
+        width: 100%;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+    .box1, .box2, .box3, .box4{
+        padding: 20px;
+        margin-top: 10px;
+        height: 120px;
+        width: 100%;
+        background-color: #a9a9a9a9;
+        border: 0;
+        cursor: pointer;
+    }
+    .rightpanel{
+        background-color: #333;
+        width: 100%;
+        height: 550px;
+        color: white;
+        padding: 30px;
+        margin: 0px;
+    }
+}

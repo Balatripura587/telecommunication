@@ -1,0 +1,32 @@
+.contain{
+    height: auto;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 30px;
+    background: linear-gradient(to right, #0575E6, #021B79);
+    color: white;
+    font-weight: bold;
+}
+.imp{
+    width: 100%;
+}
+.lower-shift{
+    display: flex;
+    margin-top: 10px;
+}
+.lower-shift p{
+    margin-top: 8px;
+    letter-spacing: 1px;
+    width: 70%;
+}
+.shift{
+    background-color: white;
+    margin-left: 15px;
+    width:30%;
+}
+a{
+    cursor: pointer;
+    text-decoration: none;
+}

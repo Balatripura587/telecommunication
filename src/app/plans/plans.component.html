@@ -1,0 +1,28 @@
+<div class="contain">
+  <div class="plan123" >
+    <div *ngFor = "let pl of plans; index as i" >
+      <div *ngIf = 'isOdd(i); then normalBlock; else featuredBlock'></div>
+      <ng-template #normalBlock>
+        <div class="plan" >
+          <div class="plan-cost"><span class="plan-price">Rs {{pl.amt}}</span></div>
+          <ul class="plan-features">
+            <li><i class="ion-checkmark"> </i>{{pl.calls}}</li>
+            <li><i class="ion-checkmark"> </i>{{pl.data}} GB per day </li>
+            <li> <i class="ion-checkmark"></i>{{pl.validity}} days validity</li>
+          </ul>
+          <button class="plan-select"(click)="showAlert(pl.amt, pl.validity)">Select Plan</button>
+        </div>
+      </ng-template>
+      <ng-template #featuredBlock>
+        <div class="plan featured" >
+          <div class="plan-cost"><span class="plan-price">Rs {{pl.amt}}</span></div>
+          <ul class="plan-features">
+            <li><i class="ion-checkmark"> </i>{{pl.calls}}</li>
+            <li><i class="ion-checkmark"> </i>{{pl.data}} GB per day </li>
+            <li> <i class="ion-checkmark"></i>{{pl.validity}} days validity</li>
+          </ul>
+          <button class="plan-select" (click)="showAlert(pl.amt, pl.validity)">Select Plan</button>
+        </div>
+      </ng-template>
+    </div>
+  </div>

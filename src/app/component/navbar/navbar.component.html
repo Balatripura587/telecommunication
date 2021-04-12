@@ -1,0 +1,77 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary bg-custom py-lg-4">
+  <a class="navbar-brand" href="#">Tele Com</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home">Home <span class="sr-only"></span></a>
+      </li>
+      <div *ngIf = "userLoggedInAndAdmin(); then AdminDashboardBlock; else DashboardBlock"></div>
+      <ng-template #AdminDashboardBlock>
+        <li class="nav-item active" >
+        <a class="nav-link" routerLink="/dashboard">Dashboard<span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item active">
+        <a class="nav-link" routerLink="/admin-dashboard">Admin Panel<span class="sr-only"></span></a>
+        </li>
+      </ng-template>
+      <ng-template #DashboardBlock>
+        <li class="nav-item active" >
+        <a class="nav-link" routerLink="/dashboard">Dashboard<span class="sr-only"></span></a>
+        </li>
+      </ng-template>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/prepaid/recharge">Recharge<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Plans
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="prepaid/plans">Prepaid</a>
+          <a class="dropdown-item" routerLink="postpaid/plans">Postpaid</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Buy SIM
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/newconnection/newprepaid">New Prepaid</a>
+          <a class="dropdown-item" routerLink="/newconnection/newpostpaid">New Postpaid</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Pay Bill
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/postpaidpaybill" >Postpaid</a>
+          <a class="dropdown-item" routerLink="/paybills">Landline</a>
+        </div>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/support">Support<span class="sr-only"></span></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active" *ngIf="onCheckLocal(); then logoutbtn; else loginbtn"></li>
+
+      <ng-template #loginbtn>
+        <a routerLink="/login" routerLinkActive="active">
+        <button class="btn btn-outline-info mr-sm-2 signin" type="submit">SIGN IN</button></a>
+      </ng-template>
+
+      <ng-template #logoutbtn>
+        <form #logout="ngForm" (ngSubmit)="LogOutUser(logout.value)">
+          <div class="form-group" [hidden]=true>
+            <input type="text" name="dummy" id="dummy" ngModel="dummy">
+          </div>
+          <button type="submit" class="btn btn-danger">SIGN OUT</button>
+        </form>
+      </ng-template>
+    </ul>
+  </div>
+</nav>

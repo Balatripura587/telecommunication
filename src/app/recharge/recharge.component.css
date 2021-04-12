@@ -1,0 +1,16 @@
+.recharge-form{
+    height: 300px;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top: 30px;
+    background: linear-gradient(to right, #0575E6, #021B79);
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+}
+span{
+    color: red;
+    font-weight: bolder;
+}

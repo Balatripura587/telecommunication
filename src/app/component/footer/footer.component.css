@@ -1,0 +1,33 @@
+.footer-section{
+    height: 500px;
+    width: 100%;
+    background-color: #041E42;
+}
+footer{
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+.address{
+    margin-left: 50px;
+    padding-top: 50px;
+    color: white;
+    width: 50%;
+}
+pre{
+    padding-top: 50px;
+    margin: 0px 0px 0px;
+    color: #a9a9a9a9;
+    width: 100%;
+}
+.social{
+    display: flex;
+    width: 100px;
+    margin-left: -20px;
+}
+.social a .smallicon{
+    height: 30px;
+    width: 30px;
+    justify-content: space-between;
+    margin-left: 20px;
+}
